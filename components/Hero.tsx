@@ -58,7 +58,7 @@ export function Hero() {
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               size="lg"
               variant="outline"
-              className="border-white/30 text-white hover:bg-white/10"
+              className="border-white/30 text-black hover:bg-white/10"
             >
               {t.hero.learnMore}
             </Button>

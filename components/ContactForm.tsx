@@ -13,7 +13,6 @@ export function ContactForm() {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     visaType: '',
     message: '',
@@ -38,7 +37,7 @@ export function ContactForm() {
 
       if (response.ok) {
         setMessage({ type: 'success', text: t.contact.success });
-        setFormData({ name: '', email: '', phone: '', visaType: '', message: '' });
+        setFormData({ name: '', phone: '', visaType: '', message: '' });
       } else {
         setMessage({ type: 'error', text: t.contact.error });
       }
@@ -80,24 +79,6 @@ export function ContactForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-foreground">
-                    {t.contact.email}
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-background border-border"
-                    placeholder={t.contact.placeholders.email}
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
                   <label htmlFor="phone" className="text-sm font-medium text-foreground">
                     {t.contact.phone}
                   </label>
@@ -111,27 +92,29 @@ export function ContactForm() {
                     placeholder={t.contact.placeholders.phone}
                   />
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="visaType" className="text-sm font-medium text-foreground">
-                    {t.contact.visaType}
-                  </label>
-                  <select
-                    id="visaType"
-                    name="visaType"
-                    value={formData.visaType}
-                    onChange={handleChange}
-                    required
-                    className="w-full h-10 px-3 rounded-md bg-background border border-border text-foreground"
-                  >
-                    <option value="">{t.contact.placeholders.selectVisa}</option>
-                    <option value="work">{t.contact.visaOptions.work}</option>
-                    <option value="residence">{t.contact.visaOptions.residence}</option>
-                    <option value="entrepreneur">{t.contact.visaOptions.entrepreneur}</option>
-                    <option value="family">{t.contact.visaOptions.family}</option>
-                    <option value="other">{t.contact.visaOptions.other}</option>
-                  </select>
-                </div>
+              <div className="space-y-2">
+                <label htmlFor="visaType" className="text-sm font-medium text-foreground">
+                  {t.contact.visaType}
+                </label>
+                <select
+                  id="visaType"
+                  name="visaType"
+                  value={formData.visaType}
+                  onChange={handleChange}
+                  required
+                  className="w-full h-10 px-3 rounded-md bg-background border border-border text-foreground"
+                >
+                  <option value="">{t.contact.placeholders.selectVisa}</option>
+                  <option value="work">{t.contact.visaOptions.work}</option>
+                  <option value="residence">{t.contact.visaOptions.residence}</option>
+                  <option value="entrepreneur">{t.contact.visaOptions.entrepreneur}</option>
+                  <option value="family">{t.contact.visaOptions.family}</option>
+                  <option value="tourist">{t.contact.visaOptions.tourist}</option>
+                  <option value="deportation">{t.contact.visaOptions.deportation}</option>
+                  <option value="other">{t.contact.visaOptions.other}</option>
+                </select>
               </div>
 
               <div className="space-y-2">

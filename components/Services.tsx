@@ -2,9 +2,9 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
-import { Briefcase, FileText, Rocket, Heart } from 'lucide-react';
+import { Briefcase, FileText, Rocket, Heart, Plane, Scale } from 'lucide-react';
 
-const icons = [Briefcase, FileText, Rocket, Heart];
+const icons = [Briefcase, FileText, Rocket, Heart, Plane, Scale];
 
 export function Services() {
   const { t } = useLanguage();
@@ -19,7 +19,7 @@ export function Services() {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {t.services.items.map((service, i) => {
               const Icon = icons[i];
               return (

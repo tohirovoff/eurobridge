@@ -12,23 +12,23 @@ export async function POST(request: NextRequest) {
     }
 
     // Send to Telegram if configured
-    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
-    const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+    const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN || '8640308416:AAHT81sBFpT4osyY1Ht6cmlQvwIMdqPN2X4';
+    // Telegram'da yozish uchun chat_id kiritilishi shart (masalan: o'zingizning profilingiz yoki gruppangiz id'si)
+    const telegramChatId = process.env.TELEGRAM_CHAT_ID || '800955323';
 
     if (telegramBotToken && telegramChatId) {
       const message = `
-🌍 New Contact Form Submission
+🌍 Veb-saytdan yangi ariza tushdi!
 
-👤 Name: ${body.name}
-📧 Email: ${body.email}
-📞 Phone: ${body.phone}
-✈️ Visa Type: ${body.visaType}
+👤 Ismi: ${body.name}
+📞 Telefon raqami: ${body.phone}
+✈️ Viza turi: ${body.visaType}
 
-💬 Message:
+💬 Qo'shimcha xabar:
 ${body.message}
 
 ---
-Received at: ${new Date().toISOString()}
+Yuborilgan vaqti: ${new Date().toLocaleString('uz-UZ', { timeZone: 'Asia/Tashkent' })}
       `.trim();
 
       try {

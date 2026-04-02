@@ -1,6 +1,5 @@
 export interface ContactFormData {
   name: string;
-  email: string;
   phone: string;
   visaType: string;
   message: string;
@@ -13,9 +12,7 @@ export function validateContactForm(data: any): { valid: boolean; errors: Record
     errors.name = 'Name must be at least 2 characters';
   }
 
-  if (!data.email || typeof data.email !== 'string' || !data.email.includes('@')) {
-    errors.email = 'Valid email is required';
-  }
+
 
   if (!data.phone || typeof data.phone !== 'string' || data.phone.trim().length < 5) {
     errors.phone = 'Valid phone number is required';
@@ -25,8 +22,8 @@ export function validateContactForm(data: any): { valid: boolean; errors: Record
     errors.visaType = 'Visa type is required';
   }
 
-  if (!data.message || typeof data.message !== 'string' || data.message.trim().length < 10) {
-    errors.message = 'Message must be at least 10 characters';
+  if (!data.message || typeof data.message !== 'string' || data.message.trim().length < 2) {
+    errors.message = 'Message must be at least 2 characters';
   }
 
   return {
