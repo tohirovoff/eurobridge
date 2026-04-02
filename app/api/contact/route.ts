@@ -31,24 +31,31 @@ ${body.message}
 Yuborilgan vaqti: ${new Date().toLocaleString('uz-UZ', { timeZone: 'Asia/Tashkent' })}
       `.trim();
 
-      try {
-        const telegramResponse = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: telegramChatId,
-            text: message,
-            parse_mode: 'HTML',
-          }),
-        });
+      // Bir nechta ID'larni ajratib olamiz
+      const chatIds = telegramChatId.split(',').map((id) => id.trim()).filter(Boolean);
 
-        if (!telegramResponse.ok) {
-          console.error('Telegram API error:', await telegramResponse.text());
-        }
-      } catch (error) {
-        console.error('Error sending Telegram message:', error);
-        // Don't fail the request if Telegram fails
-      }
+      await Promise.all(
+        chatIds.map(async (chatId) => {
+          try {
+            const telegramResponse = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'HTML',
+              }),
+            });
+
+            if (!telegramResponse.ok) {
+              console.error(`Telegram API error for chat ${chatId}:`, await telegramResponse.text());
+            }
+          } catch (error) {
+            console.error(`Error sending Telegram message to ${chatId}:`, error);
+            // Qolganlariga jo'natish xalaqit qilmasligi uchun try...catch sikl ichida
+          }
+        })
+      );
     }
 
     return NextResponse.json(
