@@ -9,7 +9,7 @@ interface LanguageContextType {
   t: (typeof translations)[Language];
 }
 
-const defaultLanguage: Language = 'en';
+const defaultLanguage: Language = 'uz';
 const defaultContextValue: LanguageContextType = {
   language: defaultLanguage,
   setLanguage: () => {},

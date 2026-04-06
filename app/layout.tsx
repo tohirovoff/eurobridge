@@ -10,25 +10,36 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://eurobridge.uz'),
   title: {
-    default: 'EUROBRIDGE - European Visa & Immigration Consulting',
+    default: 'EUROBRIDGE - Yevropa Vizasi va Immigratsiya Konsaltingi',
     template: '%s | EUROBRIDGE',
   },
-  description: 'Professional visa and immigration consulting services for seamless relocation to Europe. Expert guidance for work visas, residence permits, and family reunification.',
-  keywords: ['visa consulting', 'immigration', 'European relocation', 'work visa', 'residence permit', 'eurobridge', 'visa to europe'],
-  authors: [{ name: 'EUROBRIDGE' }],
-  creator: 'EUROBRIDGE',
+  description: 'Yevropaga ishonchli va tezkor viza olish, ishlash va qonuniy yashash uchun professional immigratsiya xizmatlari. EUROBRIDGE bilan Yevropa eshiklarini oching.',
+  keywords: ['viza', 'yevropa vizasi', 'yevropada ishlash', 'polsha vizasi', 'litva vizasi', 'ish vizasi', 'evropa viza', 'konsalting', 'immigratsiya', 'eurobridge', 'o\'zbekiston viza xizmatlari', 'chet elda ishlash', 'schengen vizasi', 'shengen', 'viza markazi'],
+  authors: [{ name: 'EUROBRIDGE Group' }],
+  creator: 'EUROBRIDGE Group',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'uz_UZ',
     url: '/',
-    title: 'EUROBRIDGE - European Visa & Immigration Consulting',
-    description: 'Your professional partner in European immigration. Expert guidance for work visas and residence permits.',
+    title: 'EUROBRIDGE - Yevropa Vizasi va Immigratsiya Konsaltingi',
+    description: 'Yevropaga ishonchli viza olish va qonuniy yashash uchun professional yordam. EUROBRIDGE orqali tezkor viza va hujjatalar.',
     siteName: 'EUROBRIDGE',
+    images: [{
+      url: '/logo.jpg',
+      width: 800,
+      height: 600,
+      alt: 'EUROBRIDGE Logo',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EUROBRIDGE - European Visa & Immigration Consulting',
-    description: 'Professional visa and immigration consulting services for seamless relocation to Europe.',
+    title: 'EUROBRIDGE - Yevropa Vizasi Konsaltingi',
+    description: 'Yevropaga ishonchli viza olish va qonuniy yashash uchun professional yordam.',
+    images: ['/logo.jpg'],
+  },
+  icons: {
+    icon: '/logo.jpg',
+    apple: '/logo.jpg',
   },
   robots: {
     index: true,
@@ -57,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="uz" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <Providers>
           {children}

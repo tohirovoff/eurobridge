@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -35,8 +36,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 rounded bg-primary text-primary-foreground font-bold">
-              E
+            <div className="relative w-12 h-12 flex-shrink-0">
+              <Image 
+                src="/logo.jpg" 
+                alt="EUROBRIDGE Visa Consulting Logo" 
+                fill
+                className="object-contain rounded-full shadow-sm"
+                priority
+              />
             </div>
             <span className="font-bold text-lg text-primary">{t.footer.company}</span>
           </Link>

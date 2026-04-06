@@ -3,6 +3,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react';
+import Image from 'next/image';
 
 export function Footer() {
   const { t } = useLanguage();
@@ -13,11 +14,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-16 pb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center justify-center w-8 h-8 rounded bg-accent text-primary font-bold">
-                E
+            <div className="flex items-center gap-3">
+              <div className="relative w-14 h-14 flex-shrink-0">
+                <Image 
+                  src="/logo.jpg" 
+                  alt="EUROBRIDGE Visa Consulting Logo" 
+                  fill
+                  className="object-contain rounded-full shadow-sm border-2 border-white/20 bg-white"
+                />
               </div>
-              <span className="font-bold text-lg">{t.footer.company}</span>
+              <span className="font-bold text-xl">{t.footer.company}</span>
             </div>
             <p className="text-sm text-primary-foreground/70">{t.footer.tagline}</p>
             <div className="flex gap-4">
